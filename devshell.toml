@@ -1,0 +1,24 @@
+imports = [
+ "language.rust"
+]
+
+[devshell]
+
+name = "rustcast"
+
+packages = []
+ "gtk4",
+ "pkg-config"
+]
+
+packagesFrom = [
+  "direnv"
+]
+
+[[commands]]
+package = "nixpkgs-fmt"
+category = "formatters"
+
+[[commands]]
+package = "clippy"
+category = "formatters"
