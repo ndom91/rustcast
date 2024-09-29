@@ -1,14 +1,20 @@
+# https://numtide.github.io/devshell
 imports = [
- "language.rust"
+  "language.rust",
+  "git.hooks"
 ]
 
-[devshell]
+[git]
+hooks.enable = true
+hooks.pre-commit.text = "rustfmt"
 
+[devshell]
 name = "rustcast"
 
 packages = [
- "gtk4",
- "pkg-config"
+  "gtk4",
+  "pkg-config",
+  "nixpkgs-fmt",
 ]
 
 packagesFrom = [
@@ -20,5 +26,19 @@ package = "nixpkgs-fmt"
 category = "formatters"
 
 [[commands]]
-package = "clippy"
-category = "formatters"
+name = "tests"
+command = "cargo test"
+help = "Run cargo tests"
+category = "rust"
+
+[[commands]]
+name = "clippy"
+command = "cargo clippy"
+help = "Run cargo clippy"
+category = "rust"
+
+[[commands]]
+name = "clean"
+command = "cargo clean"
+help = "Run cargo clean"
+category = "rust"

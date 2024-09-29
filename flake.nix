@@ -52,8 +52,18 @@
           #     pkg-config
           #   ];
           # };
+          devShells.default = pkgs.devshell.mkShell {
+            # packages = [toolchain];
+            imports = [ (pkgs.devshell.importTOML ./devshell.toml) ];
+            env = [
+              {
+                name = "RUST_SRC_PATH";
+                value = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+              }
+            ];
+          };
 
-          devShells.default = pkgs.devshell.fromTOML ./devshell.toml;
+          # devShells.default = pkgs.devshell.fromTOML ./devshell.toml;
           # devShells.default =
           #   let
           #     llvm = pkgs.llvmPackages_latest;
