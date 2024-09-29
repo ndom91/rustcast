@@ -4,26 +4,32 @@ imports = [
   "git.hooks"
 ]
 
-[git]
-hooks.enable = true
-hooks.pre-commit.text = "rustfmt"
+[git.hooks]
+enable = true
+pre-commit.text = "rustfmt"
 
 [devshell]
 name = "rustcast"
 
 packages = [
-  "gtk4",
+  "gcc",
   "pkg-config",
-  "nixpkgs-fmt",
+  "cairo.dev",
+  "gdk-pixbuf.dev",
+  "glib.dev",
+  "gobject-introspection.dev",
+  "graphene.dev",
+  "gtk4.dev",
+  "gtk4.dev",
+  "harfbuzz.dev",
+  "openssl.dev",
+  "pango.dev",
+  "vulkan-loader.dev",
 ]
 
 packagesFrom = [
   "direnv"
 ]
-
-[[commands]]
-package = "nixpkgs-fmt"
-category = "formatters"
 
 [[commands]]
 name = "tests"
@@ -32,7 +38,18 @@ help = "Run cargo tests"
 category = "rust"
 
 [[commands]]
-name = "clippy"
+name = "fmt"
+command = "cargo fmt"
+help = "Run cargo fmt"
+category = "rust"
+
+[[commands]]
+name = "run"
+help = "run main bin"
+command = "./target/debug/rustcast $@"
+
+[[commands]]
+name = "lint"
 command = "cargo clippy"
 help = "Run cargo clippy"
 category = "rust"
@@ -42,3 +59,27 @@ name = "clean"
 command = "cargo clean"
 help = "Run cargo clean"
 category = "rust"
+
+[[commands]]
+name = "dev"
+command = "cargo run"
+help = "Run cargo run"
+category = "rust"
+
+[[commands]]
+name = "build:release"
+command = "cargo build --release"
+help = "Run cargo build --release"
+category = "rust"
+
+[[env]]
+name = "LD_LIBRARY_PATH"
+prefix = "$DEVSHELL_DIR/lib"
+
+[[env]]
+name = "LIBRARY_PATH"
+prefix = "$DEVSHELL_DIR/lib"
+
+[[env]]
+name = "PKG_CONFIG_PATH"
+prefix = "$DEVSHELL_DIR/lib/pkgconfig"
