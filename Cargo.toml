@@ -8,6 +8,7 @@ readme = "README.md"
 
 [dependencies]
 gtk = { version = "0.9.2", package = "gtk4", features = ["v4_12"] }
+xdgkit = "3.2.5"
 
 [dev-dependencies]
-cargo-watch = "8.4"
+cargo-watch = "8.5.2"
