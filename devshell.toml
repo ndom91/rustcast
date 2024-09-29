@@ -62,7 +62,7 @@ category = "rust"
 
 [[commands]]
 name = "dev"
-command = "cargo run"
+command = "cargo watch -x run"
 help = "Run cargo run"
 category = "rust"
 
