@@ -7,7 +7,7 @@
 
 A GTK4 launcher for Linux written in Rust, inspired by [Raycast](https://raycast.com).
 
-## 💫 Installation
+## 🛸 Installation
 
 1. TODO
 
@@ -17,6 +17,10 @@ A GTK4 launcher for Linux written in Rust, inspired by [Raycast](https://raycast
 2. Clone the repository at `https://github.com/ndom91/rustcast`
 3. `cargo run`
 
-## 📝 License
+## ❄ Nix
+
+There is a `flake.nix` with a `package.default`, so you can use this as an input to your own flake if you'd just like to consume this package. If you'd like to develop this on NixOS, the `devshell` there will automatically be activated upon `cd`-ing into the repository's directory if you have `direnv` installed due to the `.envrc` file. This will then allow you to use the commands defined in `devshell.toml`, like `dev` to run the project with `cargo-watch`, and many more.
+
+### 📝 License
 
 MIT
